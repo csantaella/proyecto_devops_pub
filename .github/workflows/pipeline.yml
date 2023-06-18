@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Descarga repo
-        uses: actions/checkout@2
+        uses: actions/checkout@v3
       
       - name: Configuración credenciales AWS
         uses: aws-actions/configure-aws-credentials@v2
