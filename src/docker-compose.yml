@@ -13,10 +13,6 @@ services:
       - mysql
 
   phpfpm:
-
-
-
-phpfpm
     build:
       context: ./
       dockerfile: Dockerfile
