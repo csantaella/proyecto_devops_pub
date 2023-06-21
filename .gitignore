@@ -1,3 +1,9 @@
+# MySQL
+dev/mysql
+src/mysql
+
+
+
 ### Terraform ###
 # Local .terraform directories
 **/.terraform/*
