@@ -16,7 +16,40 @@
                 '".$conn->real_escape_string($_POST['candidatos'])."',
                 '".$conn->real_escape_string($_POST['nombre'])."'
             );      
-        ")) echo 'Datos registrados';
-        else echo 'No se han podido registrar tus datos';
+        ")) {
+            // Mensaje personalizado si los datos se registran correctamente
+            echo '<div style="color: black; font-size: 50px; text-align: center; margin-top: 20px;">¡Datos registrados con éxito!</div>';
+            
+            // Mostrar los datos introducidos
+            echo '<div style="color: black; text-align: left; padding-top: 20px; font-size: 25px; margin-left: 20px;">';
+            echo 'DNI: ' . $_POST['dni'] . '<br>';
+            echo 'Nombre: ' . $_POST['nombre'] . '<br>';
+            echo 'Candidato seleccionado: ' . $_POST['candidatos'] . '<br>';
+            echo '</div>';
+
+            echo '<div style="color: black; font-size: 40px; text-align: center; margin-top: 50px;">Gracias por su colaboración</div>';
+
+            echo '<div style="text-align: center; margin-top: 20px;">';
+        echo '<a href="index.html" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; font-size: 16px; border-radius: 5px;">Volver al formulario</a>';
+        echo '</div>';
+
+        echo '<script>';
+        echo 'setTimeout(function() {';
+        echo '  window.location.href = "formulario.html";';
+        echo '}, 5000);';  // Cambiar 5000 a la cantidad de milisegundos deseados (5 segundos en este ejemplo)
+        echo '</script>';
+            
+        } else {
+            // Mensaje personalizado si no se pueden registrar los datos
+            echo '<div style="color: black; font-size: 20px; text-align: center; margin-top: 20px;">Ha ocurrido un error al intentar registrar tus datos</div>';
+        }
     }
-?>
+    ?>
+   
+    
+    
+    
+    
+    
+    
+    
