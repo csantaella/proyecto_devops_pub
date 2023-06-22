@@ -1,5 +1,4 @@
 #!/bin/bash
-
 sudo yum update -y
 sudo amazon-linux-extras install -y docker
 sudo systemctl enable docker.service
