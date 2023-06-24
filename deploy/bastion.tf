@@ -7,7 +7,6 @@ data "aws_ami" "amazon_linux" {
   owners = ["amazon"]
 }
 
-<<<<<<< HEAD
 # Definimos el ROLE
 resource "aws_iam_role" "bastion" {
   name               = "${local.prefix}-bastion"
@@ -37,12 +36,6 @@ resource "aws_instance" "bastion" {
   vpc_security_group_ids = [
     aws_security_group.bastion.id
   ]
-=======
-resource "aws_instance" "bastion" {
-  ami           = data.aws_ami.amazon_linux.id
-  instance_type = "t2.micro"
-  user_data     = file("./templates/bastion/user-data.sh")
->>>>>>> 6f3e600 (problemas con bastion y outputs)
   tags = merge(
     local.common_tags,
     {

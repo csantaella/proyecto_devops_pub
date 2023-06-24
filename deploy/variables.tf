@@ -12,12 +12,12 @@ variable "contact" {
 
 variable "db_username" {
   description = "Username for the RDS Postgres instance"
-  default = "root"
+  default     = "root"
 }
 
 variable "db_password" {
   description = "Password for the RDS postgres instance"
-  default = "Admin2033="
+  default     = "Admin2033="
 }
 
 variable "bastion_key_name" {
