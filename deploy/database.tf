@@ -21,7 +21,12 @@ resource "aws_security_group" "rds" {
   ingress {
     protocol  = "tcp"
     from_port = 3306
-    to_port   = 33
+    to_port   = 3306
+
+    #  security_groups = [                No funciona. Para limitar el acceso al Bastion
+    #    aws_security_group.bastion.id
+    #  ]
+
   }
 
   tags = local.common_tags
@@ -35,7 +40,7 @@ resource "aws_db_instance" "main" {
   storage_type            = "gp2"
   engine_version          = "8.0.32"
   instance_class          = "db.t3.micro"
-  password                = var.db_password
+  password                = "Admin2033="
   username                = var.db_username
   backup_retention_period = 0
   db_subnet_group_name    = aws_db_subnet_group.main.name
