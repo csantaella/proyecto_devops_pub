@@ -63,7 +63,8 @@ resource "aws_route" "public_internet_access_a" {
 }
 
 resource "aws_eip" "public_a" {
-  vpc = true
+  domain = "vpc"
+  #  vpc = true   DEPRECATED
 
   tags = merge(
     local.common_tags,
@@ -126,7 +127,8 @@ resource "aws_route" "public_internet_access_b" {
 }
 
 resource "aws_eip" "public_b" {
-  vpc = true
+  domain = "vpc"
+  #  vpc = true   DEPRECATED
 
   tags = merge(
     local.common_tags,
