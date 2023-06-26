@@ -34,10 +34,10 @@ jobs:
       - name: Build, tag, push image API en ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY_API: app-api-proxy
+          ECR_REPOSITORY_API: app-api-api
           IMAGE_API_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG . -f src/api/Dockerfile
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG . -f src/web/Dockerfile
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_TAG
           echo "Cambios realizados Api"
           
