@@ -37,7 +37,7 @@ jobs:
           ECR_REPOSITORY_API: app-api-api
           IMAGE_API_TAG: latest
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG . -f src/web/Dockerfile
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG . -f src/app/Dockerfile
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG
           echo "Cambios realizados Api"
           
