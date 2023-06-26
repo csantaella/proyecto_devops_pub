@@ -3,9 +3,6 @@ name: Pipeline - Fase Deploy ECR
 on: 
   workflow_dispatch
 
-env:
-  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-
 jobs:
   build-image:
     runs-on: ubuntu-latest
@@ -26,6 +23,7 @@ jobs:
       
       - name: Build, tag, push image Proxy en ECR
         env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY_PROXY: app-api-proxy
           IMAGE_PROXY_TAG: ${{ github.sha }}
         run: |
@@ -35,6 +33,7 @@ jobs:
 
       - name: Build, tag, push image API en ECR
         env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY_API: app-api-api
           IMAGE_API_TAG: ${{ github.sha }}
         run: |
