@@ -1,4 +1,4 @@
-name: Deploy ECR
+name: Pipeline - Fase Deploy ECR
 
 on: 
   workflow_dispatch
