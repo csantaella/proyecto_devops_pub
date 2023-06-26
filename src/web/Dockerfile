@@ -1,4 +1,3 @@
-FROM php:8-fpm
-
-RUN docker-php-ext-install mysqli
-RUN docker-php-ext-enable mysqli
+FROM nginx:latest
+COPY ./web/src: /var/www/html
+COPY ./web/default.conf: /etc/nginx/conf.d/default.conf
