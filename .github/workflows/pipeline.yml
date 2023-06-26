@@ -3,6 +3,9 @@ name: Pipeline - Fase Deploy ECR
 on: 
   workflow_dispatch
 
+env:
+  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+
 jobs:
   build-image:
     runs-on: ubuntu-latest
@@ -21,14 +24,22 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       
-      - name: Build, tag, push image en ECR
+      - name: Build, tag, push image Proxy en ECR
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: app-api-proxy
-          IMAGE_TAG: ${{ github.sha }}
+          ECR_REPOSITORY_PROXY: app-api-proxy
+          IMAGE_PROXY_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . -f src/web/Dockerfile
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "Cambios realizados v2"
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_PROXY:$IMAGE_PROXY_TAG . -f src/web/Dockerfile
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_PROXY:$IMAGE_TAG
+          echo "Cambios realizados Proxy"
+
+      - name: Build, tag, push image API en ECR
+        env:
+          ECR_REPOSITORY_API: app-api-api
+          IMAGE_API_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG . -f src/api/Dockerfile
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_TAG
+          echo "Cambios realizados Api"
           
         
