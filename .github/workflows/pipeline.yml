@@ -28,7 +28,7 @@ jobs:
           IMAGE_PROXY_TAG: ${{ github.sha }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_PROXY:$IMAGE_PROXY_TAG . -f src/web/Dockerfile
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY_PROXY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_PROXY:$IMAGE_PROXY_TAG
           echo "Cambios realizados Proxy"
 
       - name: Build, tag, push image API en ECR
