@@ -22,7 +22,6 @@ jobs:
           docker-compose -f deploy/docker-compose.yml run --rm terraform init     
           docker-compose -f deploy/docker-compose.yml run --rm terraform validate
           docker-compose -f deploy/docker-compose.yml run --rm terraform fmt -check 
-          docker-compose -f deploy/docker-compose.yml run --rm terraform apply
 
       - name: Terraform Plan
         run: |
