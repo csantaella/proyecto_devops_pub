@@ -24,7 +24,15 @@ jobs:
           docker-compose -f deploy/docker-compose.yml run --rm terraform fmt -check 
           docker-compose -f deploy/docker-compose.yml run --rm terraform apply
 
-          #      - name: Login en AWS ECR
+      - name: Terraform Plan
+        run: |
+          docker-compose -f deploy/docker-compose.yml run --rm terraform plan
+
+      - name: Terraform Apply
+        run: |
+          docker-compose -f deploy/docker-compose.yml run --rm terraform apply -auto-approve
+
+#      - name: Login en AWS ECR
 #        id: login-ecr
 #        uses: aws-actions/amazon-ecr-login@v1
 #      
