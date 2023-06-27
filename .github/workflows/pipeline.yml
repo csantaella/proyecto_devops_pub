@@ -33,6 +33,7 @@ jobs:
       
       - name: Terraform Destroy
         run: |
+          docker-compose -f deploy/docker-compose.yml run --rm terraform init     
           docker-compose -f deploy/docker-compose.yml run --rm terraform destroy -auto-approve
 
 #      - name: Login en AWS ECR
