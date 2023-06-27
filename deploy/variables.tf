@@ -26,12 +26,12 @@ variable "bastion_key_name" {
 
 variable "ecr_image_api" {
   description = "ECR Image for API"
-  # default     = "<APP ECR Image URL>:latest"   #POR DEFINIR
+  default     = "latest"
 }
 
 variable "ecr_image_proxy" { #POR DEFINIR
   description = "ECR Image for API"
-  # default     = "<App ECR Image for Proxy>:latest"
+  default     = "latest"
 }
 
 # variable "django_secret_key" {
