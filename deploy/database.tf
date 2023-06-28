@@ -22,11 +22,10 @@ resource "aws_security_group" "rds" {
     protocol  = "tcp"
     from_port = 3306
     to_port   = 3306
-
-    #  security_groups = [                No funciona. Para limitar el acceso al Bastion
-    #    aws_security_group.bastion.id
-    #  ]
-
+    security_groups = [
+      aws_security_group.bastion.id,
+      aws_security_group.ecs_service.id,
+    ]
   }
 
   tags = local.common_tags
