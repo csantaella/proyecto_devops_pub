@@ -17,7 +17,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
 
-      - name: Terraform Ops
+      - name: Terraform init
         run: |
           docker-compose -f deploy/docker-compose.yml run --rm terraform init
+
+      - name: Terraform fmt y validate
+        run: |
+          docker-compose -f deploy/docker-compose.yml run --rm terraform fmt
+          docker-compose -f deploy/docker-compose.yml run --rm terraform validate
+
+      - name: Plan
+        run: |          
           docker-compose -f deploy/docker-compose.yml run --rm terraform plan 
