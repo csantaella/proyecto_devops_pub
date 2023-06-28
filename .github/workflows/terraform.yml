@@ -19,6 +19,4 @@ jobs:
 
       - name: Terraform Ops
         run: |
-          docker-compose -f deploy/docker-compose.yml run --rm terraform init     
-          docker-compose -f deploy/docker-compose.yml run --rm terraform fmt
-          docker-compose -f deploy/docker-compose.yml run --rm terraform validate
+          docker-compose -f deploy/docker-compose.yml run --rm terraform plan 
