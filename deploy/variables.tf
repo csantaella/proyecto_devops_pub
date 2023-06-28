@@ -17,7 +17,7 @@ variable "db_username" {
 
 variable "db_password" {
   description = "Password for the RDS postgres instance"
-  default     = "Admin2033="
+  default     = "Admin2023@"
 }
 
 variable "bastion_key_name" {
@@ -26,12 +26,12 @@ variable "bastion_key_name" {
 
 variable "ecr_image_api" {
   description = "ECR Image for API"
-  default     = "latest"
+  default     = "044447351162.dkr.ecr.eu-west-1.amazonaws.com/app-api-api:latest"
 }
 
 variable "ecr_image_proxy" { #POR DEFINIR
   description = "ECR Image for API"
-  default     = "latest"
+  default     = "044447351162.dkr.ecr.eu-west-1.amazonaws.com/app-api-proxy:latest"
 }
 
 # variable "django_secret_key" {

@@ -1,0 +1,24 @@
+ame: Pipeline - Fase Deploy ECR
+
+on: 
+  workflow_dispatch
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Descarga repo
+        uses: actions/checkout@v3
+      
+      - name: Configuración credenciales AWS
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
+      - name: Terraform Ops
+        run: |
+          docker-compose -f deploy/docker-compose.yml run --rm terraform init     
+          docker-compose -f deploy/docker-compose.yml run --rm terraform fmt
+          docker-compose -f deploy/docker-compose.yml run --rm terraform validate

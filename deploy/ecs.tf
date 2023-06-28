@@ -35,6 +35,7 @@ resource "aws_iam_role" "app_iam_role" {
   tags               = local.common_tags
 }
 
+# Agrupación de los log generados por los contenedores en CloudWatch
 resource "aws_cloudwatch_log_group" "ecs_task_logs" {
   name = "${local.prefix}-api"
 
@@ -54,6 +55,7 @@ data "template_file" "api_container_definitions" {
     #    db_name           = aws_db_instance.main.name
     db_user          = aws_db_instance.main.username
     db_pass          = aws_db_instance.main.password
+    db_name          = aws_db_instance.main.db_name
     log_group_name   = aws_cloudwatch_log_group.ecs_task_logs.name
     log_group_region = data.aws_region.current.name
     allowed_hosts    = "*"
