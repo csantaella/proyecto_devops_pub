@@ -1,4 +1,4 @@
-ame: Pipeline - Terraform fmt y validate
+name: Pipeline - Terraform fmt y validate
 
 on: 
   workflow_dispatch
