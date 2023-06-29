@@ -17,7 +17,7 @@ variable "db_username" {
 
 variable "db_password" {
   description = "Password for the RDS postgres instance"
-  default     = "Admin2023@"
+  default     = "Admin2023"
 }
 
 variable "bastion_key_name" {

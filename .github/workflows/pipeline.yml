@@ -46,18 +46,17 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG . -f src/api/Dockerfile
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG
           echo "Cambios realizados Api"
-  
-      - name: Terraform Destroy
-        run: |
-          docker-compose -f deploy/docker-compose.yml run --rm terraform init     
-          docker-compose -f deploy/docker-compose.yml run --rm terraform destroy -auto-approve
       
       - name: Terraform Plan
         run: |
           docker-compose -f deploy/docker-compose.yml run --rm terraform plan
 
-      - name: Terraform Plan
+      - name: Terraform Apply
         run: |         
           docker-compose -f deploy/docker-compose.yml run --rm terraform apply -auto-approve
-          
+  
+   #   - name: Terraform Destroy
+   #   run: |
+   #     docker-compose -f deploy/docker-compose.yml run --rm terraform init     
+   #     docker-compose -f deploy/docker-compose.yml run --rm terraform destroy -auto-approve
           
