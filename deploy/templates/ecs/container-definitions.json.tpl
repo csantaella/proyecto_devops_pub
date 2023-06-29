@@ -19,12 +19,12 @@
                 "awslogs-stream-prefix": "api"
             }
         },
- #       "portMappings": [
- #           {
- #               "containerPort": 9000,
- #               "hostPort": 9000
- #           }
- #       ],
+        "portMappings": [
+            {
+                "containerPort": 9000,
+                "hostPort": 9000
+            }
+        ],
         "mountPoints": [
             {
                 "readOnly": false,
