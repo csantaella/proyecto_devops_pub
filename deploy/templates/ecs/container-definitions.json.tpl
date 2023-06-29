@@ -28,7 +28,7 @@
         "mountPoints": [
             {
                 "readOnly": false,
-                "containerPath": "/vol/web",
+                "containerPath": "/var/www/html",
                 "sourceVolume": "static"
             }
         ]
@@ -40,14 +40,14 @@
         "portMappings": [
             {
                 "containerPort": 80,
-                "hostPort": 8000
+                "hostPort": 80
             }
         ],
         "memoryReservation": 256,
         "environment": [
             {"name": "APP_HOST", "value": "127.0.0.1"},
             {"name": "APP_PORT", "value": "9000"},
-            {"name": "LISTEN_PORT", "value": "8000"}
+            {"name": "LISTEN_PORT", "value": "80"}
         ],
         "logConfiguration": {
             "logDriver": "awslogs",
@@ -60,7 +60,7 @@
         "mountPoints": [
             {
                 "readOnly": true,
-                "containerPath": "/vol/static",
+                "containerPath": "/var/www/html",
                 "sourceVolume": "static"
             }
         ]
