@@ -34,13 +34,13 @@ resource "aws_security_group" "rds" {
 resource "aws_db_instance" "main" {
   engine                        = "mysql"
   identifier                    = "${local.prefix}-db"
-  db_name                       = "prueba"
   allocated_storage             = 20
   storage_type                  = "gp2"
   engine_version                = "5.7"
   instance_class                = "db.t3.micro"
   password                      = var.db_password
   username                      = var.db_username
+  db_name                       = var.db_name
   backup_retention_period       = 0
   db_subnet_group_name          = aws_db_subnet_group.main.name
   multi_az                      = false

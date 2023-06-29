@@ -20,6 +20,11 @@ variable "db_password" {
   default     = "Admin2023"
 }
 
+variable "db_name" {
+  description = "Password for the RDS postgres instance"
+  default     = "prueba"
+}
+
 variable "bastion_key_name" {
   default = "web-app-api-devops-bastion"
 }

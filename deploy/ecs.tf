@@ -52,7 +52,6 @@ data "template_file" "api_container_definitions" {
     proxy_image = var.ecr_image_proxy
 
     db_host = aws_db_instance.main.address
-    db_name          = aws_db_instance.main.name
     db_user          = aws_db_instance.main.username
     db_pass          = aws_db_instance.main.password
     db_name          = aws_db_instance.main.db_name
