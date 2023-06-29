@@ -32,23 +32,22 @@ resource "aws_security_group" "rds" {
 }
 
 resource "aws_db_instance" "main" {
-  engine                  = "mysql"
-  identifier              = "${local.prefix}-db"
-  db_name                 = "prueba"
-  allocated_storage       = 20
-  storage_type            = "gp2"
-  engine_version          = "8.0.32"
-  instance_class          = "db.t3.micro"
-  manage_master_user_password   = false
+  engine                        = "mysql"
+  identifier                    = "${local.prefix}-db"
+  db_name                       = "prueba"
+  allocated_storage             = 20
+  storage_type                  = "gp2"
+  engine_version                = "8.0.32"
+  instance_class                = "db.t3.micro"
   master_user_secret_kms_key_id = "Admin2033"
-  password                = var.db_password
-  username                = var.db_username
-  backup_retention_period = 0
-  db_subnet_group_name    = aws_db_subnet_group.main.name
-  multi_az                = false
-  skip_final_snapshot     = true
-  vpc_security_group_ids  = [aws_security_group.rds.id]
-  publicly_accessible     = true
+  password                      = var.db_password
+  username                      = var.db_username
+  backup_retention_period       = 0
+  db_subnet_group_name          = aws_db_subnet_group.main.name
+  multi_az                      = false
+  skip_final_snapshot           = true
+  vpc_security_group_ids        = [aws_security_group.rds.id]
+  publicly_accessible           = true
 
   tags = merge(
     local.common_tags,
