@@ -37,9 +37,8 @@ resource "aws_db_instance" "main" {
   db_name                       = "prueba"
   allocated_storage             = 20
   storage_type                  = "gp2"
-  engine_version                = "8.0.32"
+  engine_version                = "5.7"
   instance_class                = "db.t3.micro"
-  master_user_secret_kms_key_id = "Admin2033"
   password                      = var.db_password
   username                      = var.db_username
   backup_retention_period       = 0
