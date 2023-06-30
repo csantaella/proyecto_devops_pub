@@ -19,12 +19,6 @@
                 "awslogs-stream-prefix": "api"
             }
         },
-        "portMappings": [
-            {
-                "containerPort": 9000,
-                "hostPort": 9000
-            }
-        ],
         "mountPoints": [
             {
                 "readOnly": false,
@@ -46,7 +40,6 @@
         "memoryReservation": 256,
         "environment": [
             {"name": "APP_HOST", "value": "127.0.0.1"},
-            {"name": "APP_PORT", "value": "9000"},
             {"name": "LISTEN_PORT", "value": "80"}
         ],
         "logConfiguration": {
