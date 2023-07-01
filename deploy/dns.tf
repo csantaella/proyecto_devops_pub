@@ -9,5 +9,5 @@
 #   ttl     = "300"
 # 
 #   records = [aws_lb.api.dns_name]
-}
+# }
 
