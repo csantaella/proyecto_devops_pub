@@ -34,6 +34,24 @@ resource "aws_lb_listener" "api" {
   }
 }
 
+resource "aws_lb_listener" "api_https" {
+  load_balancer_arn = aws_lb.api.arn
+  port              = 443
+  protocol          = "HTTPS"
+
+  certificate_arn = aws_acm_certificate_validation.cert.certificate_arn
+
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
+
 resource "aws_security_group" "lb" {
   description = "Allow access to Application Load Balancer"
   name        = "${local.prefix}-lb"
@@ -43,6 +61,13 @@ resource "aws_security_group" "lb" {
     protocol    = "tcp"
     from_port   = 80
     to_port     = 80
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    protocol    = "tcp"
+    from_port   = 443
+    to_port     = 443
     cidr_blocks = ["0.0.0.0/0"]
   }
 
