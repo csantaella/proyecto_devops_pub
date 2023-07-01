@@ -34,24 +34,6 @@ resource "aws_lb_listener" "api" {
   }
 }
 
-resource "aws_lb_listener" "api_https" {
-  load_balancer_arn = aws_lb.api.arn
-  port              = 443
-  protocol          = "HTTPS"
-
-  certificate_arn = aws_acm_certificate_validation.cert.certificate_arn
-
-  default_action {
-    type = "redirect"
-
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
-  }
-}
-
 resource "aws_security_group" "lb" {
   description = "Allow access to Application Load Balancer"
   name        = "${local.prefix}-lb"
