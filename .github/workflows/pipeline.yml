@@ -47,10 +47,10 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_API:$IMAGE_API_TAG
           echo "Cambios realizados Api"
       
-      - name: Terraform workspace
-        run: |
-          docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new "staging"
-          docker-compose -f deploy/docker-compose.yml run --rm terraform workspace select "staging"
+     #  - name: Terraform workspace
+     #    run: |
+     #      docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new "staging"
+     #      docker-compose -f deploy/docker-compose.yml run --rm terraform workspace select "staging"
       
       - name: Terraform Plan
         run: |
