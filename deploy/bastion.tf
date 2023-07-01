@@ -56,13 +56,6 @@ resource "aws_security_group" "bastion" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
-    protocol    = "tcp"
-    from_port   = 8080
-    to_port     = 8080
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   egress {
     protocol    = "tcp"
     from_port   = 443
