@@ -55,8 +55,7 @@ data "template_file" "api_container_definitions" {
     db_name          = aws_db_instance.main.db_name
     log_group_name   = aws_cloudwatch_log_group.ecs_task_logs.name
     log_group_region = data.aws_region.current.name
-    allowed_hosts    = "*"
-    # allowed_hosts    = aws_lb.api.dns_name
+    allowed_hosts = aws_route53_record.app.fqdn
   }
 }
 
@@ -99,8 +98,8 @@ resource "aws_security_group" "ecs_service" {
   }
 
   ingress {
-    from_port   = 8000
-    to_port     = 8000
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     security_groups = [
           aws_security_group.lb.id
@@ -130,5 +129,6 @@ resource "aws_ecs_service" "api" {
         container_name   = "proxy"
         container_port   = 80
     }
+  depends_on = [aws_lb_listener.api_https]
 }
 

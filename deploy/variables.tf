@@ -53,5 +53,3 @@ variable "subdomain" {
     dev        = "api.dev"
   }
 }
-
-
