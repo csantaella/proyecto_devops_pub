@@ -55,7 +55,8 @@ data "template_file" "api_container_definitions" {
     db_name          = aws_db_instance.main.db_name
     log_group_name   = aws_cloudwatch_log_group.ecs_task_logs.name
     log_group_region = data.aws_region.current.name
-    allowed_hosts    = aws_lb.api.dns_name
+    allowed_hosts    = *
+    # allowed_hosts    = aws_lb.api.dns_name
   }
 }
 
