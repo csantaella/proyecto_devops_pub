@@ -6,8 +6,6 @@ on:
       - dev
       - master
 
-env:
-  TF_VAR_ecr_image_api = latest
 
 jobs:
   build-image:
