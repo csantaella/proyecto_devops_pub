@@ -1,11 +1,11 @@
 name: Pipeline - Esqueleto
 
 on: 
-  push:
+  pull_request:
     branches:
       - dev
       - master
-
+    types: [closed]
 
 jobs:
   build-image:
@@ -17,17 +17,17 @@ jobs:
      
   
       - name: Terraform Plan
-        if: ${{ github.ref == 'ref/heads/dev' }}
+        if: github.ref_name == 'dev'
         run: |
           echo "Terraform Plan de DEV"
       
       - name: Terraform Apply DEV
-        if: ${{ github.ref == 'ref/heads/dev' }}
+        if: github.ref_name == 'dev'
         run: |         
           echo "Terraform Apply de DEV"
 
       - name: Terraform Apply MASTER
-        if: ${{ github.ref == 'ref/heads/master' }}
+        if: github.ref_name == 'master'
         run: |         
           echo "Terraform Apply de MASTER"
 
