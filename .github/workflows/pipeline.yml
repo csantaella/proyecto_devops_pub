@@ -1,15 +1,7 @@
 name: Pipeline - Fase Deploy ECR
 
-
 on: 
-  pull_request:
-    branches:
-      - master
-      - produccion
-    types: [closed]
-
-env:
-  TF_VAR_ecr_image_api = latest
+  workflow_dispatch
 
 jobs:
   build-image:
