@@ -1,7 +1,7 @@
 name: Pipeline - Esqueleto
 
 on: 
-  merge:
+  push:
     branches:
       - dev
       - master
