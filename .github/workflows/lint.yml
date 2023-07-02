@@ -12,4 +12,4 @@ jobs:
       - name: Linting PHP
         uses: StephaneBour/actions-php-lint@8.2
         with:
-          dir: './scr/web/srcweb'
+          dir: './src/web/srcweb'
