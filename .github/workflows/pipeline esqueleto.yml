@@ -30,7 +30,7 @@ jobs:
       - name: Terraform Apply MASTER
         if: github.ref_name == 'produccion'
         run: |         
-          echo "Terraform Apply de Produccion"
+          echo "Terraform Apply de  Produccion"
 
    #   - name: Terraform Destroy
    #     run: |
