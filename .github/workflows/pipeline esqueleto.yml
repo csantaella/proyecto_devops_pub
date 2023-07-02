@@ -5,6 +5,7 @@ on:
     branches:
       - dev
       - master
+      - produccion
     types: [closed]
 
 jobs:
@@ -17,19 +18,19 @@ jobs:
      
   
       - name: Terraform Plan
-        if: github.ref_name == 'dev'
+        if: github.ref_name == 'master'
         run: |
-          echo "Terraform Plan de DEV"
+          echo "Terraform Plan de master"
       
       - name: Terraform Apply DEV
-        if: github.ref_name == 'dev'
-        run: |         
-          echo "Terraform Apply de DEV"
-
-      - name: Terraform Apply MASTER
         if: github.ref_name == 'master'
         run: |         
-          echo "Terraform Apply de MASTER"
+          echo "Terraform Apply de master"
+
+      - name: Terraform Apply MASTER
+        if: github.ref_name == 'produccion'
+        run: |         
+          echo "Terraform Apply de Produccion"
 
    #   - name: Terraform Destroy
    #     run: |
