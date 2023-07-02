@@ -1,7 +1,12 @@
 name: Pipeline - Fase Deploy ECR
 
 on: 
-  workflow_dispatch
+  pull_request:
+    branches:
+      - master
+      - produccion
+    types:
+      - closed 
 
 jobs:
   build-image:
