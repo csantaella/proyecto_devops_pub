@@ -14,7 +14,7 @@ jobs:
     steps:    
       - name: Descarga repo
         run: |
-          echo "Codigo descargado"
+          echo "Codigo  descargado"
      
   
       - name: Terraform Plan
